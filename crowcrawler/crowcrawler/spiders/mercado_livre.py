@@ -14,10 +14,10 @@ class MercadoLivreSpider(scrapy.Spider):
             start_urls.append(link)
 
     def parse(self, response, **kawargs):
-        price = response.xpath('//span[@class="andes-money-amount__fraction"]/text()').get()
-        title = response.xpath('//h1[@class="ui-pdp-title"]/text()').get()
+        preço = response.xpath('//span[@class="andes-money-amount__fraction"]/text()').get()
+        título = response.xpath('//h1[@class="ui-pdp-title"]/text()').get()
 
         yield{
-                'price' : price,
-            'title' : title
+                'preço' : preço,
+            'título' : título
         }
