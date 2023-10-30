@@ -1,4 +1,6 @@
+import manipul_db
 import scrapy
+import csv
 
 
 class AmazonSpider(scrapy.Spider):
