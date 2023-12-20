@@ -30,7 +30,7 @@ git clone https://github.com/OwlGuilherme/CrowCrawler
 ```
 + Entre na pasta do projeto com o comando:
 ```
-cd Python-Scrapper
+cd CrowCrawler
 ```
 + Crie um ambiente virtual e ative o ambiente (opcional):
 ```
