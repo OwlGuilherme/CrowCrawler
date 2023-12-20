@@ -40,7 +40,7 @@ python -m venv scrapper-env && source scrapper-env/bin/activate
 ```
 pip install -r requirements.txt
 ```
-+ Adicione, na variável "site_url", o site do produto que deseja utilizar:
++ Adicione, no arquivo urls.json os links dos produtos que deseja salvar.
 + Execute a aplicação
 ```
 python3 main.py
