@@ -14,6 +14,8 @@ def main():
 
         nome_produto = data.get('name', 'Nome não encontrado')
         preco_atual = data.get('price', 'Preço não encontrado')
+        if 'R$' in preco_atual:
+            preco_atual = preco_atual.replace('R$', '').strip()
 
         salvar_dados(nome_produto, preco_atual)
         print("Dados salvos no banco de dados com sucesso!")
