@@ -20,7 +20,7 @@ Antes de começar, verifique os seguintes requisitos:
 
 ### Estado funcional da aplicação
 + A presente aplicação encontra-se funcional
-Basta, no arquivo main, inserir o código do produto no site mercado livre e poderá salvar o nome do produto, seu preço e o momento em que foi salvo o preço do produto.
+Basta, no arquivo main, inserir o link do produto, no site mercado livre, e poderá salvar o nome do produto, seu preço e o momento em que foi salvo o preço do produto.
 
 ## ⚙️ Utilização
 + Abra o seu terminal
