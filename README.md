@@ -21,5 +21,5 @@ Caso queira contribuir com o projeto, ficarei muito grato e, para isso, siga est
 
 + Caso queira me mandar uma mensagem, fique à vontade: 
 
-![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FGuilher_me99)
+Twitter: https://twitter.com/Guilher_me99
 
