@@ -1,6 +1,7 @@
-from utils.rules import MercadoLivreRules, NetshoesRules
+from utils.rules import MercadoLivreRules, NetshoesRules, AmazonRules
 
 SITE_RULES = {
     'mercadolivre': MercadoLivreRules(),
-    'netshoes': NetshoesRules()
+    'netshoes': NetshoesRules(),
+    'amazon' : AmazonRules()
 }

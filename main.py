@@ -5,8 +5,8 @@ from utils.config import SITE_RULES
 criar_tabela()
 
 def main():
-    site_url = 'https://produto.mercadolivre.com.br/MLB-3489320777-relogio-smart-esportivo-tranya-s2-resistente-agua-3atm-_JM#polycard_client=recommendations_home_navigation-trend-recommendations&reco_backend=machinalis-homes-pdp-boos&reco_client=home_navigation-trend-recommendations&reco_item_pos=2&reco_backend_type=function&reco_id=2d7a2e3a-dd92-46da-accc-472e7945eaa5'
-    site_rules = SITE_RULES.get('mercadolivre')
+    site_url = 'https://www.amazon.com.br/Tranya-Smartwatch-Rel%C3%B3gio-inteligente-Bluetooth/dp/B0BDDHB5Q1/ref=pd_ci_mcx_mh_mcx_views_0?pd_rd_i=B0BDDHB5Q1'
+    site_rules = SITE_RULES.get('amazon')
 
     if site_rules:
         data = scrape_site(site_url, site_rules)
@@ -23,6 +23,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
