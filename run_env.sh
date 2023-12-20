@@ -4,7 +4,8 @@
 venv_name="scrapper-env"
 
 # Verifica se o ambiente virtual já existe
-if [! -d "$venv_name" ]; then
+if [ ! -d "$venv_name" ]; then
+    # Cria o ambiente virtual se não existir
     python -m venv "$venv_name"
 fi
 
