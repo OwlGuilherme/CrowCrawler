@@ -5,5 +5,10 @@ class MercadoLivreRules:
 
 class NetshoesRules:
     def __init__(self):
-        self.name_selector = '//*[@id="content"]/div[2]/section/div[1]/section/h1'
-        self.price_selector = '//*[@id="buy-box"]/div[3]/div[2]/div/span[1]/strong'
+        self.name_selector = ''
+        self.price_selector = ''
+
+class AmazonRules:
+    def __init__(self):
+        self.name_selector = '#productTitle'
+        self.price_selector = '.a-offscreen'
