@@ -10,20 +10,38 @@ def load_urls_from_json(file_path='urls.json'):
         data = json.load(file)
         return data.get('urls', [])
 
+def choose_site():
+    print("Escolha o site que deseja raspar:")
+    print("1. Amazon")
+    print("2. Mercado Livre")
+
+    choice = input("Digite o número correspondente ao site desejado: ")
+
+    if choice == '1':
+        return 'amazon'
+    elif choice == '2':
+        return 'mercadolivre'
+    else:
+        print("Escolha inválida. Por favor, escolha 1 ou 2.")
+        return choose_site()
+
+def filter_urls_by_site(urls, site_key):
+    return [url for url in urls if site_key in url]
+
 def main():
-    # Lista de URLs a serem raspadas
-    urls = load_urls_from_json()
+    site_key = choose_site()
+    site_rules = SITE_RULES.get(site_key)
 
-    for site_url in urls:
-        # Obtenha as regras do site a partir do mapeamento SITE_RULES
-        site_rules_key = None
-        for key, rules in SITE_RULES.items():
-            if key in site_url:
-                site_rules_key = key
-                break
+    if site_rules:
+        # Lista de URLs a serem raspadas
+        urls = load_urls_from_json()
+        filtered_urls = filter_urls_by_site(urls, site_key)
 
-        if site_rules_key:
-            site_rules = SITE_RULES.get(site_rules_key)
+        if not filtered_urls:
+            print(f"Não há URLs para o site {site_key}. Encerrando.")
+            return
+
+        for site_url in filtered_urls:
             data = scrape_site(site_url, site_rules)
             print(data)
 
@@ -37,9 +55,9 @@ def main():
             preco_atual = preco_atual.replace(',', '.')
 
             salvar_dados(nome_produto, preco_atual)
-            print("Dados salvos no banco de dados com sucesso")
-        else:
-            print("Regras não encontradas para o site")
+            print("Dados salvos no banco de dados com sucesso para", site_url)
+    else:
+        print(f"Regras não encontradas para o site: {site_key}")
 
 if __name__ == "__main__":
     main()
