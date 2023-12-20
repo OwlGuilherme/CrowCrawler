@@ -2,7 +2,7 @@
 
 Ferramenta para coleta e análise de dados de e-commerce
 
-> Status: A aplica está em desenvolvimento, mas já é funcional. ⚠️
+> Status: A aplicação está em desenvolvimento, mas já é funcional. ⚠️
 
 ## 💻 Pré-requisitos
 
