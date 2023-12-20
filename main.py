@@ -17,6 +17,9 @@ def main():
         if 'R$' in preco_atual:
             preco_atual = preco_atual.replace('R$', '').strip()
 
+         # Substituir vírgulas por pontos no preço
+        preco_atual = preco_atual.replace(',', '.')
+
         salvar_dados(nome_produto, preco_atual)
         print("Dados salvos no banco de dados com sucesso!")
 
