@@ -5,8 +5,10 @@ Ferramenta para coleta e análise de dados de e-commerce
 ## 🧰 Sobre
 
 + Esta aplicação tem como objetivo realizar a raspagem de dados de sites de e-commerce e salvar tais dados em um banco de dados portável, no caso, sqlite3.
-+ Entretanto, ainda estou na fase inicial do seu desenvolvimento, com a criação de sua estrutura, módulos básico...
-Portanto, a aplicação ainda não é funcional, mas, em breve, teremos atualizações.
+
+### Estado funcional da aplicação
++ A presente aplicação encontra-se funcional
+Basta, no arquivo main, inserir o código do produto no site mercado livre e poderá salvar o nome do produto, seu preço e o momento em que foi salvo o preço do produto.
 
 
 ## 📮 Contribuindo para o CrowCrawler
