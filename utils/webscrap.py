@@ -7,9 +7,10 @@ def scrape_site(site_url, rules):
     response = requests.get(site_url)
     html_content = response.text
 
+    print(response.status_code)
+
     soup = BeautifulSoup(response.content, 'html.parser')
 
-    # Modifique as linhas abaixo para usar o método `select` com XPath
     name_elements = soup.select(rules.name_selector)
     price_elements = soup.select(rules.price_selector)
 
