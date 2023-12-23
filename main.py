@@ -14,6 +14,8 @@ def choose_site():
     print("Escolha o site que deseja raspar:")
     print("1. Amazon")
     print("2. Mercado Livre")
+    print("3. Netshoes")
+    print("4. Centauro")
 
     choice = input("Digite o número correspondente ao site desejado: ")
 
@@ -21,8 +23,12 @@ def choose_site():
         return 'amazon'
     elif choice == '2':
         return 'mercadolivre'
+    elif choice == '3':
+        return 'netshoes'
+    elif choice == '4':
+        return 'centauro'
     else:
-        print("Escolha inválida. Por favor, escolha 1 ou 2.")
+        print("Escolha inválida. Por favor, escolha 1, 2, 3 ou 4.")
         return choose_site()
 
 def filter_urls_by_site(urls, site_key):
