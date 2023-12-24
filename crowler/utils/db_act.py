@@ -7,16 +7,21 @@ def criar_tabela():
                         (produto TEXT, horario TIMESTAMP, precos REAL)''')
 
 def salvar_dados(nome, preco_atual):
+    # Remover "R$" e substituir vírgulas por pontos
+    preco_atual = float(preco_atual.replace('R$', '').replace(',', '.'))
+
+    # Obter o horário atual
     horario = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
-    
+
     with sqlite3.connect('banco.db') as conn:
         try:
             conn.execute('INSERT INTO dados VALUES (?, ?, ?)', (nome, horario, preco_atual))
             conn.commit()
             print(f"Dados inseridos com sucesso: {nome}, {horario}, {preco_atual}")
-            
+
         except Exception as e:
             print(f"Erro ao inserir dados: {e}")
+
 
 
 def obter_dados():
