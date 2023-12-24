@@ -1,10 +1,30 @@
+from typing import Iterable
 import scrapy
+from scrapy.http import Request
+from crowler.rules.rules import AmazonRules
+import json
 
 
 class AmazonSpider(scrapy.Spider):
     name = "amazon"
     allowed_domains = ["amazon.com.br"]
-    start_urls = ["https://amazon.com.br"]
+    
+    def start_requests(self):
+        with open('crowler/rules/amazon.json', 'r') as file:
+            data = json.load(file)
+            urls = data.get('urls', [])
+
+        for url in urls:
+            yield scrapy.Request(url=url, callback=self.parse)
+
+    rules = AmazonRules()
 
     def parse(self, response):
-        pass
+        name = response.css(self.rules.name_selector + '::text').get()
+        price = response.css(self.rules.price_selector + '::text').get()
+
+        yield {
+            'name' : name.strip() if name else 'Nome não encontrado',
+            'price' : price.strip() if price else 'Preço não encontrado'
+        }
+
