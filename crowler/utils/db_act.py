@@ -10,9 +10,14 @@ def salvar_dados(nome, preco_atual):
     horario = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
     
     with sqlite3.connect('banco.db') as conn:
-        conn.execute('INSERT INTO dados VALUES (?, ?, ?)',
-                     (nome, horario, preco_atual))
-        conn.commit()
+        try:
+            conn.execute('INSERT INTO dados VALUES (?, ?, ?)', (nome, horario, preco_atual))
+            conn.commit()
+            print(f"Dados inseridos com sucesso: {nome}, {horario}, {preco_atual}")
+            
+        except Exception as e:
+            print(f"Erro ao inserir dados: {e}")
+
 
 def obter_dados():
     with sqlite3.connect('banco.db') as conn:
