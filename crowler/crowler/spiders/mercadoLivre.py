@@ -22,11 +22,11 @@ class MercadolivreSpider(scrapy.Spider):
     rules = MercadoLivreRules()
 
     def parse(self, response):
-        name = response.css(self.rules.name_selector + '::text').get()
-        price = response.css(self.rules.price_selector + '::text').get()
+        name = response.xpath(self.rules.name_selector).get()
+        price = response.xpath(self.rules.price_selector).get()
 
         yield {
-            'name' : name.strip() if name else 'Nome não encontrado',
-            'price' : price.strip() if price else 'Preço não encontrado'
+            'name': name.strip() if name else 'Nome não encontrado',
+            'price': price.strip() if price else 'Preço não encontrado'
         }
 
