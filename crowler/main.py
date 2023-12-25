@@ -1,5 +1,4 @@
-import json
-from utils.db_act import criar_tabela, salvar_dados
+from utils.db_act import criar_tabela
 from utils.config import SITE_RULES
 from scrapy.crawler import CrawlerProcess
 from crowler.spiders.mercadoLivre import MercadolivreSpider
@@ -12,8 +11,8 @@ def choose_site():
     print("Escolha o site que deseja raspar:")
     print("1. Amazon")
     print("2. Mercado Livre")
-    print("3. Netshoes")
-    print("4. Centauro")
+    '''print("3. Netshoes")
+    print("4. Centauro")'''
 
     choice = input("Digite o número correspondente ao site desejado: ")
 
@@ -35,7 +34,7 @@ def main():
 
     if site_rules:
         process = CrawlerProcess(settings={
-            'DOWNLOAD_DELAY': 2
+            'DOWNLOAD_DELAY': 3
         })
 
         if site_key == 'amazon':
