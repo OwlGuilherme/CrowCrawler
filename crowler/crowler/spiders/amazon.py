@@ -1,6 +1,4 @@
-from typing import Iterable
 import scrapy
-from scrapy.http import Request
 from crowler.rules.rules import AmazonRules
 import json
 from utils.db_act import salvar_dados
