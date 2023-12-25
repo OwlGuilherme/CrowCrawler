@@ -20,7 +20,9 @@ Antes de começar, verifique os seguintes requisitos:
 
 ### Estado funcional da aplicação
 + A presente aplicação encontra-se funcional
+Basta 
 Basta, no arquivo main, inserir o link do produto, no site mercado livre, e poderá salvar o nome do produto, seu preço e o momento em que foi salvo o preço do produto.
++ Atualmente, apenas a raspagem do site Amazon apresenta-se funcional. As demais estão ainda em desenvolvimento.
 
 ## ⚙️ Utilização
 + Abra o seu terminal
@@ -40,7 +42,8 @@ python -m venv scrapper-env && source scrapper-env/bin/activate
 ```
 pip install -r requirements.txt
 ```
-+ Adicione, no arquivo urls.json os links dos produtos que deseja salvar.
++ Adicione, nos arquivos .json os links dos produtos, dos respectivos sites que deseja salvar.
+Caminho para os arquivos "./crowler/crowler/rules/*.json".
 + Execute a aplicação
 ```
 python3 main.py
