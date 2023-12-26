@@ -15,5 +15,5 @@ class AmazonRules:
 
 class CentauroRules:
     def __init__(self):
-        self.name_selector = 'h1.ui-pdp-title'
-        self.price_selector = 'span.andes-money-amount'
+        self.name_selector = '//h1[@class="Typographystyled__Subtitle-sc-bdxvrr-2 kiddsr"]/text()'
+        self.price_selector = '//p[@class="Typographystyled__Subtitle-sc-bdxvrr-2 erkEgi Price-styled__CurrentPrice-sc-26a42e8a-4 iXVXIv"]/text()'
