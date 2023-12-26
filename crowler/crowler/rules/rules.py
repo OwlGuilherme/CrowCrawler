@@ -6,8 +6,8 @@ class MercadoLivreRules:
 
 class NetshoesRules:
     def __init__(self):
-        self.name_selector = 'h1[data-productname]'
-        self.price_selector = '.default-price span strong'
+        self.name_selector = '//h1[@data-productname]/text()'
+        self.price_selector = '//div[@class="default-price"]/span/strong/text()'
 
 class AmazonRules:
     def __init__(self):
