@@ -4,9 +4,9 @@ import datetime
 def criar_tabela():
     with sqlite3.connect('banco.db') as conn:
         conn.execute('''CREATE TABLE IF NOT EXISTS dados
-                        (produto TEXT, horario TIMESTAMP, precos REAL)''')
+                        (produto TEXT, horario TIMESTAMP, precos REAL, site TEXT)''')
 
-def salvar_dados(nome, preco_atual):
+def salvar_dados(nome, preco_atual, site):
     # Remover "R$" e substituir vírgulas por pontos
     if 'R$' in preco_atual:
         # Remover "R$" e substituir vírgulas por pontos
@@ -20,9 +20,9 @@ def salvar_dados(nome, preco_atual):
 
     with sqlite3.connect('banco.db') as conn:
         try:
-            conn.execute('INSERT INTO dados VALUES (?, ?, ?)', (nome, horario, preco_atual))
+            conn.execute('INSERT INTO dados VALUES (?, ?, ?, ?)', (nome, horario, preco_atual, site))
             conn.commit()
-            print(f"Dados inseridos com sucesso: {nome}, {horario}, {preco_atual}")
+            print(f"Dados inseridos com sucesso: {nome}, {horario}, {preco_atual}, {site}")
 
         except Exception as e:
             print(f"Erro ao inserir dados: {e}")
