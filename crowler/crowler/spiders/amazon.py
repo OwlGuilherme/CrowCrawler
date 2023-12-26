@@ -27,5 +27,5 @@ class AmazonSpider(scrapy.Spider):
             'price': price.strip() if price else 'Preço não encontrado'
         }
 
-        salvar_dados(self.data['name'], self.data['price'])
+        salvar_dados(self.data['name'], self.data['price'], 'Amazon')
 
