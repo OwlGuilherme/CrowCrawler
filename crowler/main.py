@@ -3,6 +3,7 @@ from utils.config import SITE_RULES
 from scrapy.crawler import CrawlerProcess
 from crowler.spiders.mercadoLivre import MercadolivreSpider
 from crowler.spiders.amazon import AmazonSpider
+from crowler.spiders.centauro import CentauroSpider
 
 
 criar_tabela()
@@ -10,7 +11,7 @@ criar_tabela()
 def choose_site():
     print("Escolha o site que deseja raspar:")
     print("1. Amazon")
-    print("2. Mercado Livre")
+    print("4. Centauro")
     '''print("3. Netshoes")
     print("4. Centauro")'''
 
@@ -41,6 +42,8 @@ def main():
             process.crawl(AmazonSpider, rules=site_rules)
         elif site_key == 'mercadolivre':
             process.crawl(MercadolivreSpider, rules=site_rules)
+        elif site_key == 'centauro':
+            process.crawl(CentauroSpider, rules=site_rules)
 
         process.start()
 
