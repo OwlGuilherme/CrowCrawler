@@ -16,5 +16,5 @@ class AmazonRules:
 
 class CentauroRules:
     def __init__(self):
-        self.name_selector = '//h1[@data-testid="product-title"]'
-        self.price_selector = "//p[@data-testid='price-current']"
+        self.name_selector = '//h1[@data-testid="product-title"]/text()'
+        self.price_selector = '//p[@data-testid="price-current"]/text()'
