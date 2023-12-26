@@ -8,7 +8,12 @@ def criar_tabela():
 
 def salvar_dados(nome, preco_atual):
     # Remover "R$" e substituir vírgulas por pontos
-    preco_atual = float(preco_atual.replace('R$', '').replace(',', '.'))
+    if 'R$' in preco_atual:
+        # Remover "R$" e substituir vírgulas por pontos
+        preco_atual = float(preco_atual.replace('R$', '').replace(',', '.'))
+    else:
+        # Se não contiver "R$", apenas substituir vírgulas por pontos
+        preco_atual = float(preco_atual.replace(',', '.'))
 
     # Obter o horário atual
     horario = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
