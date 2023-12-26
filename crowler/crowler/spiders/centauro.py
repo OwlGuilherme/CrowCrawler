@@ -28,7 +28,8 @@ class CentauroSpider(scrapy.Spider):
             'price': price.strip() if price else 'Preço não encontrado'
         }
 
-        print(f'Nome: {self.data['name']}')
-        print(f'Preço: {self.data['price']}')
+        #print(f'Nome: {self.data['name']}')
+        #print(f'Preço: {self.data['price']}')
 
-        #salvar_dados(self.data['name'], self.data['price'])
+        salvar_dados(self.data['name'], self.data['price'])
+
