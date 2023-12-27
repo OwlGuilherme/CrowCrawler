@@ -5,6 +5,7 @@ from crowler.spiders.mercadoLivre import MercadolivreSpider
 from crowler.spiders.amazon import AmazonSpider
 from crowler.spiders.centauro import CentauroSpider
 from crowler.spiders.netshoes import NetshoesSpider
+from crowler.spiders.declathon import DeclathonSpider
 
 
 criar_tabela()
@@ -16,6 +17,7 @@ def choose_site():
     print("4. Centauro")
     '''print("3. Netshoes")
     print("4. Centauro")'''
+    print("5. Declathon")
 
     choice = input("Digite o número correspondente ao site desejado: ")
 
@@ -27,6 +29,8 @@ def choose_site():
         #return 'netshoes'
     elif choice == '4':
         return 'centauro'
+    elif choice == '5':
+        return 'declathon'
     else:
         print("Escolha inválida. Por favor, escolha 1 ou 4.")
         return choose_site()
@@ -48,6 +52,8 @@ def main():
             process.crawl(CentauroSpider, rules=site_rules)
         elif site_key == 'netshoes':
             process.crawl(NetshoesSpider, rules=site_rules)
+        elif site_key == 'declathon':
+            process.crawl(DeclathonSpider, rules=site_rules)
 
         process.start()
 
