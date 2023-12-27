@@ -28,7 +28,6 @@ def salvar_dados(nome, preco_atual, site):
             print(f"Erro ao inserir dados: {e}")
 
 
-
 def obter_dados():
     with sqlite3.connect('banco.db') as conn:
         cursor = conn.cursor()

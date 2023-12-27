@@ -28,3 +28,4 @@ class MercadolivreSpider(scrapy.Spider):
         }
 
         salvar_dados(self.data['name'], self.data['price'])
+

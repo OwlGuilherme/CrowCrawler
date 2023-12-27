@@ -6,3 +6,4 @@ SITE_RULES = {
     'amazon' : AmazonRules(),
     'centauro' : CentauroRules()
 }
+
