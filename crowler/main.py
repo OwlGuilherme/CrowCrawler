@@ -41,7 +41,7 @@ def main():
 
     if site_rules:
         process = CrawlerProcess(settings={
-            'DOWNLOAD_DELAY': 3
+            'DOWNLOAD_DELAY': 1
         })
 
         if site_key == 'amazon':
