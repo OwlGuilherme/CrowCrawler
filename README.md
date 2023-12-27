@@ -20,9 +20,11 @@ Antes de começar, verifique os seguintes requisitos:
 
 ### Estado funcional da aplicação
 + A presente aplicação encontra-se funcional
-Basta 
-Basta, no arquivo main, inserir o link do produto, no site mercado livre, e poderá salvar o nome do produto, seu preço e o momento em que foi salvo o preço do produto.
-+ Atualmente, apenas a raspagem do site Amazon apresenta-se funcional. As demais estão ainda em desenvolvimento.
+Basta, no respetivo arquivo .json, inserir os links dos produtos, do site que deseja raspar, e poderá salvar o nome do produto, seu preço e o momento em que foi salvo o preço do produto.
+#### Sites que já funcionam
++ Amazon
++ Centauro
++ Declathon
 
 ## ⚙️ Utilização
 + Abra o seu terminal
@@ -46,7 +48,7 @@ pip install -r requirements.txt
 Caminho para os arquivos "./crowler/crowler/rules/*.json".
 + Execute a aplicação
 ```
-python3 main.py
+python main.py
 ```
 
 ## 📮 Contribuindo para o CrowCrawler
