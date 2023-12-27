@@ -12,7 +12,7 @@ criar_tabela()
 def choose_site():
     print("Escolha o site que deseja raspar:")
     print("1. Amazon")
-    print("3. Netshoes")
+    #print("3. Netshoes")
     print("4. Centauro")
     '''print("3. Netshoes")
     print("4. Centauro")'''
@@ -21,14 +21,14 @@ def choose_site():
 
     if choice == '1':
         return 'amazon'
-    elif choice == '2':
-        return 'mercadolivre'
-    elif choice == '3':
-        return 'netshoes'
+    #elif choice == '2':
+        #return 'mercadolivre'
+    #elif choice == '3':
+        #return 'netshoes'
     elif choice == '4':
         return 'centauro'
     else:
-        print("Escolha inválida. Por favor, escolha 1, 2, 3 ou 4.")
+        print("Escolha inválida. Por favor, escolha 1 ou 4.")
         return choose_site()
 
 def main():
