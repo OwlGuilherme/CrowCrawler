@@ -8,6 +8,7 @@ from crowler.spiders.netshoes import NetshoesSpider
 from crowler.spiders.declathon import DeclathonSpider
 
 
+
 criar_tabela()
 
 def choose_site():
@@ -41,7 +42,7 @@ def main():
 
     if site_rules:
         process = CrawlerProcess(settings={
-            'DOWNLOAD_DELAY': 1
+            'DOWNLOAD_DELAY': 3
         })
 
         if site_key == 'amazon':
