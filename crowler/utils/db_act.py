@@ -1,6 +1,6 @@
+# db_operations.py
 import sqlite3
 import datetime
-
 
 def criar_tabela():
     with sqlite3.connect('banco.db') as conn:
@@ -9,17 +9,9 @@ def criar_tabela():
         conn.execute('''CREATE TABLE IF NOT EXISTS ultimo_preco
                         (produto TEXT, preco REAL, site TEXT, PRIMARY KEY (produto, site))''')
 
+def salvar_dados_no_banco(nome, preco_atual, site):
+    preco_atual = preprocessar_preco(preco_atual)
 
-def salvar_dados(nome, preco_atual, site):
-    # Remover "R$" e substituir vírgulas por pontos
-    if 'R$' in preco_atual:
-        # Remover "R$" e substituir vírgulas por pontos
-        preco_atual = float(preco_atual.replace('R$', '').replace(',', '.'))
-    else:
-        # Se não contiver "R$", apenas substituir vírgulas por pontos
-        preco_atual = float(preco_atual.replace(',', '.'))
-
-    # Obter o horário atual
     horario = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
 
     with sqlite3.connect('banco.db') as conn:
@@ -28,9 +20,25 @@ def salvar_dados(nome, preco_atual, site):
             conn.commit()
             print(f"Dados inseridos com sucesso: {nome}, {horario}, {preco_atual}, {site}")
 
+            # Atualizar o último preço registrado
+            conn.execute('INSERT OR REPLACE INTO ultimo_preco VALUES (?, ?, ?)', (nome, preco_atual, site))
+            conn.commit()
+
         except Exception as e:
             print(f"Erro ao inserir dados: {e}")
 
+def preprocessar_preco(preco):
+    if preco and 'R$' in preco:
+        preco = preco.replace('R$', '').replace('.', '').replace(',', '.')
+    return preco
+
+def obter_ultimo_preco(nome, site):
+    with sqlite3.connect('banco.db') as conn:
+        cursor = conn.cursor()
+        cursor.execute('SELECT preco FROM ultimo_preco WHERE produto=? AND site=?', (nome, site))
+        ultimo_preco = cursor.fetchone()
+
+    return ultimo_preco[0] if ultimo_preco else None
 
 def obter_dados():
     with sqlite3.connect('banco.db') as conn:
@@ -39,4 +47,3 @@ def obter_dados():
         dados = cursor.fetchall()
 
     return dados
-
