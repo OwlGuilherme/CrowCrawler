@@ -1,4 +1,3 @@
-# db_operations.py
 import sqlite3
 import datetime
 
@@ -9,7 +8,7 @@ def criar_tabela():
         conn.execute('''CREATE TABLE IF NOT EXISTS ultimo_preco
                         (produto TEXT, preco REAL, site TEXT, PRIMARY KEY (produto, site))''')
 
-def salvar_dados_no_banco(nome, preco_atual, site):
+def salvar_dados(nome, preco_atual, site):
     preco_atual = preprocessar_preco(preco_atual)
 
     horario = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
@@ -28,8 +27,8 @@ def salvar_dados_no_banco(nome, preco_atual, site):
             print(f"Erro ao inserir dados: {e}")
 
 def preprocessar_preco(preco):
-    if preco and 'R$' in preco:
-        preco = preco.replace('R$', '').replace('.', '').replace(',', '.')
+    if isinstance(preco, str) and 'R$' in preco:
+        preco = preco.replace('R$', '').replace(',', '.').strip()
     return preco
 
 def obter_ultimo_preco(nome, site):
