@@ -1,10 +1,14 @@
 import sqlite3
 import datetime
 
+
 def criar_tabela():
     with sqlite3.connect('banco.db') as conn:
         conn.execute('''CREATE TABLE IF NOT EXISTS dados
                         (produto TEXT, horario TIMESTAMP, precos REAL, site TEXT)''')
+        conn.execute('''CREATE TABLE IF NOT EXISTS ultimo_preco
+                        (produto TEXT, preco REAL, site TEXT, PRIMARY KEY (produto, site))''')
+
 
 def salvar_dados(nome, preco_atual, site):
     # Remover "R$" e substituir vírgulas por pontos
@@ -31,7 +35,7 @@ def salvar_dados(nome, preco_atual, site):
 def obter_dados():
     with sqlite3.connect('banco.db') as conn:
         cursor = conn.cursor()
-        cursor.execute('SELECT produto, horario, precos FROM dados')
+        cursor.execute('SELECT produto, horario, precos, site FROM dados')
         dados = cursor.fetchall()
 
     return dados
