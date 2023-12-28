@@ -28,7 +28,7 @@ def salvar_dados(nome, preco_atual, site):
 
 def preprocessar_preco(preco):
     if isinstance(preco, str) and 'R$' in preco:
-        preco = preco.replace('R$', '').replace(',', '.').strip()
+        preco = preco.replace('R$', '').replace(',', '.')
     return preco
 
 def obter_ultimo_preco(nome, site):
