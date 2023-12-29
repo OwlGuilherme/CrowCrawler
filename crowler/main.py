@@ -33,7 +33,7 @@ def show_menu():
     elif choose == '2':
         os.system("clear")
         escolhe_spyder_json()
-        
+
 
 def go_scrapping():
     
@@ -65,15 +65,20 @@ def go_scrapping():
 
 
 def choose_site():
-    print("Escolha o site que deseja raspar:")
-    print("1. Amazon")
-    #print("3. Netshoes")
-    print("4. Centauro")
-    '''print("3. Netshoes")
-    print("4. Centauro")'''
-    print("5. Declathon")
 
-    choice = input("Digite o número correspondente ao site desejado: ")
+    print("+-----------------------------------+")
+    print("|            CrowCrawler            |")
+    print("+-----------------------------------+")
+    print("| Escolha o site que deseja raspar: |")
+    print("+- - - - - - - - - - - - - - - - - -+")
+    print("| 1. Amazon                         |")
+    print("| 2. Inativo                        |")
+    print("| 3. Inativo                        |")
+    print("| 4. Centauro                       |")
+    print("| 5. Declathon                      |")    
+    print("+-----------------------------------+")
+
+    choice = input("> ")
 
     if choice == '1':
         return 'amazon'
@@ -88,6 +93,7 @@ def choose_site():
     else:
         print("Escolha inválida. Por favor, escolha 1 ou 4.")
         return choose_site()
+    
 
 def main():
     site_key = choose_site()
