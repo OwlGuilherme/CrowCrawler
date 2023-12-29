@@ -15,6 +15,26 @@ import os
 
 criar_tabela()
 
+def show_menu():
+    print("+---------------------------+")
+    print("|        CrowCrawler        |")
+    print("+---------------------------+")
+    print("|    O que desejar fazer?   |")
+    print("+- - - - - - - - - - - - - -+")
+    print("| 1. WebScrapping           |")
+    print("| 2. Adicionar link         |")
+    print("| 3. Encerrar execução      |")
+    print("+---------------------------+")
+
+    choose = input("> ")
+
+    if choose == '1':
+        go_scrapping()
+    elif choose == '2':
+        os.system("clear")
+        escolhe_spyder_json()
+        
+
 def choose_site():
     print("Escolha o site que deseja raspar:")
     print("1. Amazon")
