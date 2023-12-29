@@ -1,7 +1,7 @@
 import scrapy
 from crowler.rules.rules import CentauroRules
 import json
-from utils.db_act import salvar_dados
+from utils.db_act import salvar_dados, obter_ultimo_preco, preprocessar_preco
 
 
 class CentauroSpider(scrapy.Spider):
@@ -20,16 +20,22 @@ class CentauroSpider(scrapy.Spider):
 
     def parse(self, response):
 
-        name = response.selector.xpath(self.rules.name_selector).get()
+        name = response.selector.xpath(self.rules.name_selector).get().strip()
         price = response.selector.xpath(self.rules.price_selector).get()
 
-        self.data = {
-            'name': name.strip() if name else 'Nome não encontrado',
-            'price': price.strip() if price else 'Preço não encontrado'
-        }
+        price = preprocessar_preco(price)
 
-        #print(f'Nome: {self.data['name']}')
-        #print(f'Preço: {self.data['price']}')
+         # Verificar mudança de preço antes de salvar
+        if self.verificar_mudanca_de_preco(name, float(price), 'Centauro'):
+            salvar_dados(name, float(price), 'Centauro')
 
-        salvar_dados(self.data['name'], self.data['price'], 'Centauro')
+    def verificar_mudanca_de_preco(self, name, novo_preco, site, margem_tolerancia=0.05):
+        ultimo_preco = obter_ultimo_preco(name, site)
+
+        if ultimo_preco is None:
+            return True
+
+        diferenca_percentual = abs((novo_preco - ultimo_preco) / ultimo_preco)
+        return diferenca_percentual > margem_tolerancia
+                                          
 
