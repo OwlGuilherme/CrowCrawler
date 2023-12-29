@@ -1,12 +1,16 @@
+#Módulos para manipulação de arquivos
 from utils.db_act import criar_tabela
+from utils.json_act import escolhe_spyder_json
 from utils.config import SITE_RULES
+# Spiders
 from scrapy.crawler import CrawlerProcess
-from crowler.spiders.mercadoLivre import MercadolivreSpider
 from crowler.spiders.amazon import AmazonSpider
-from crowler.spiders.centauro import CentauroSpider
 from crowler.spiders.netshoes import NetshoesSpider
+from crowler.spiders.centauro import CentauroSpider
 from crowler.spiders.declathon import DeclathonSpider
-
+from crowler.spiders.mercadoLivre import MercadolivreSpider
+# Outras bibliotecas
+import os
 
 
 criar_tabela()
