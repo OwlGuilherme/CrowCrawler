@@ -82,7 +82,7 @@ def choose_site():
     print("| 3. Inativo                        |")
     print("| 4. Centauro                       |")
     print("| 5. Declathon                      |")
-    print("| 6. Sair                          |")    
+    print("| 6. Sair                           |")    
     print("+-----------------------------------+")
 
     choice = input("> ")
@@ -98,6 +98,7 @@ def choose_site():
     elif choice == '5':
         return 'declathon'
     elif choice == '6':
+        os.system("clear")
         sys.exit(0)
     else:
         os.system("clear")
