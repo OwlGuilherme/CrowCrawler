@@ -26,8 +26,8 @@ class DeclathonSpider(scrapy.Spider):
         price = preprocessar_preco(price)
 
         # Verificar mudança de preço antes de salvar
-        if self.verificar_mudanca_de_preco(name, float(price), 'Amazon'):
-            salvar_dados(name, float(price), 'Amazon')
+        if self.verificar_mudanca_de_preco(name, float(price), 'Declathon'):
+            salvar_dados(name, float(price), 'Declathon')
 
     def verificar_mudanca_de_preco(self, name, novo_preco, site, margem_tolerancia=0.05):
         ultimo_preco = obter_ultimo_preco(name, site)
