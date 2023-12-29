@@ -35,6 +35,35 @@ def show_menu():
         escolhe_spyder_json()
         
 
+def go_scrapping():
+    
+    site_key = choose_site()
+    
+    site_rules = SITE_RULES.get(site_key)
+
+    if site_rules:
+        process = CrawlerProcess(settings={
+            'DOWNLOAD_DELAY': 3
+        })
+
+        if site_key == 'amazon':
+            process.crawl(AmazonSpider, rules=site_rules)
+        elif site_key == 'mercadolivre':
+            process.crawl(MercadolivreSpider, rules=site_rules)
+        elif site_key == 'centauro':
+            process.crawl(CentauroSpider, rules=site_rules)
+        elif site_key == 'netshoes':
+            process.crawl(NetshoesSpider, rules=site_rules)
+        elif site_key == 'declathon':
+            process.crawl(DeclathonSpider, rules=site_rules)
+
+        process.start()
+
+        print("Dados salvos no banco de dados com sucesso.")
+    else:
+        print(f"Regras não encontradas para o site: {site_key}")
+
+
 def choose_site():
     print("Escolha o site que deseja raspar:")
     print("1. Amazon")
