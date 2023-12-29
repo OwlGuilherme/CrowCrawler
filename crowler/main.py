@@ -11,6 +11,7 @@ from crowler.spiders.declathon import DeclathonSpider
 from crowler.spiders.mercadoLivre import MercadolivreSpider
 # Outras bibliotecas
 import os
+import sys
 
 
 def show_menu():
@@ -27,10 +28,18 @@ def show_menu():
     choose = input("> ")
 
     if choose == '1':
+        os.system("clear")
         go_scrapping()
     elif choose == '2':
         os.system("clear")
         escolhe_spyder_json()
+    elif choose == '3':
+        os.system("clear")
+        sys.exit(0)
+    else:
+        os.system("clear")
+        print("Opção inválida, por favor, escolhe entre 1, 2 ou 3.\n")
+        show_menu()
 
 
 def go_scrapping():
@@ -72,7 +81,8 @@ def choose_site():
     print("| 2. Inativo                        |")
     print("| 3. Inativo                        |")
     print("| 4. Centauro                       |")
-    print("| 5. Declathon                      |")    
+    print("| 5. Declathon                      |")
+    print("| 6. Sair                          |")    
     print("+-----------------------------------+")
 
     choice = input("> ")
@@ -87,14 +97,20 @@ def choose_site():
         return 'centauro'
     elif choice == '5':
         return 'declathon'
+    elif choice == '6':
+        sys.exit(0)
     else:
-        print("Escolha inválida. Por favor, escolha 1 ou 4.")
+        os.system("clear")
+        print("Escolha inválida. Por favor, escolha 1, 4, 5 ou 6.\n")        
         return choose_site()
     
 
 def main():
 
+    os.system("clear")
+
     criar_tabela()
+
     show_menu()
     go_scrapping()
 
