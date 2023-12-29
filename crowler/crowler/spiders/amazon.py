@@ -28,8 +28,8 @@ class AmazonSpider(scrapy.Spider):
         if self.verificar_mudanca_de_preco(name, float(price), 'Amazon'):
             salvar_dados(name, float(price), 'Amazon')
 
-    def verificar_mudanca_de_preco(self, nome, novo_preco, site, margem_tolerancia=0.05):
-        ultimo_preco = obter_ultimo_preco(nome, site)
+    def verificar_mudanca_de_preco(self, name, novo_preco, site, margem_tolerancia=0.05):
+        ultimo_preco = obter_ultimo_preco(name, site)
 
         if ultimo_preco is None:
             return True
