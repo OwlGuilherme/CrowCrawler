@@ -3,6 +3,7 @@ from crowler.rules.rules import AmazonRules
 import json
 from utils.db_act import salvar_dados, obter_ultimo_preco, preprocessar_preco
 
+
 class AmazonSpider(scrapy.Spider):
     name = "amazon"
     allowed_domains = ["amazon.com.br"]
@@ -23,7 +24,6 @@ class AmazonSpider(scrapy.Spider):
 
         price = preprocessar_preco(price)
 
-
         # Verificar mudança de preço antes de salvar
         if self.verificar_mudanca_de_preco(name, float(price), 'Amazon'):
             salvar_dados(name, float(price), 'Amazon')
@@ -36,3 +36,4 @@ class AmazonSpider(scrapy.Spider):
 
         diferenca_percentual = abs((novo_preco - ultimo_preco) / ultimo_preco)
         return diferenca_percentual > margem_tolerancia
+
