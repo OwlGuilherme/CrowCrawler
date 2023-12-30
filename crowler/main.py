@@ -18,8 +18,6 @@ import sys
 
 def show_menu_escolha_site():
         
-        os.system("clear")
-        
         print("+-----------------------------------+")
         print("|      Digite o site do produto     |")
         print("+- - - - - - - - - - - - - - - - - -+")
@@ -42,18 +40,20 @@ def show_menu_escolha_site():
         elif choose == '6':
             os.system("clear")
             show_menu()
-        elif choose == '6':
+        elif choose == '7':
             os.system("clear")
             sys.exit(0)
 
         else:
             os.system("clear")
-            print("Opção inválida, por favor, escolhe entre 1, 4 ou 5")
+            print("Opção inválida, por favor, escolhe entre 1, 4, 5, 6 ou 7.")
             show_menu_escolha_site()
 
         produto = escolher_produto(site)
 
         plotar_historico_precos(produto, site)
+
+        os.system("clear")
 
         show_menu_escolha_site()
             
@@ -79,6 +79,7 @@ def show_menu():
         os.system("clear")
         escolhe_spyder_json()
     elif choose == '3':
+        os.system("clear")
         show_menu_escolha_site()
     elif choose == '4':
         os.system("clear")
