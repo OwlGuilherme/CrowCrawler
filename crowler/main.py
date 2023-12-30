@@ -1,5 +1,5 @@
 #Módulos para manipulação de arquivos
-from utils.db_act import criar_tabela
+from utils.db_act import criar_tabela, escolher_produto
 from utils.json_act import escolhe_spyder_json
 from utils.config import SITE_RULES
 # Spiders
@@ -9,10 +9,54 @@ from crowler.spiders.netshoes import NetshoesSpider
 from crowler.spiders.centauro import CentauroSpider
 from crowler.spiders.declathon import DeclathonSpider
 from crowler.spiders.mercadoLivre import MercadolivreSpider
+# Plotagem de gráficos
+from utils.graficos import plotar_historico_precos
 # Outras bibliotecas
 import os
 import sys
 
+
+def show_menu_escolha_site():
+        
+        os.system("clear")
+        
+        print("+-----------------------------------+")
+        print("|      Digite o site do produto     |")
+        print("+- - - - - - - - - - - - - - - - - -+")
+        print("| 1. Amazon                         |")
+        print("| 2. Inativo                        |")
+        print("| 3. Inativo                        |")
+        print("| 4. Centauro                       |")
+        print("| 5. Declathon                      |")
+        print("| 6. Voltar                         |")
+        print("| 7. Sair                           |")  
+        print("+-----------------------------------+")
+
+        choose = input("> ")
+        if choose == '1':
+            site = 'Amazon'
+        elif choose == '4':
+            site = 'Centauro'
+        elif choose == '5':
+            site = 'Declathon'
+        elif choose == '6':
+            os.system("clear")
+            show_menu()
+        elif choose == '6':
+            os.system("clear")
+            sys.exit(0)
+
+        else:
+            os.system("clear")
+            print("Opção inválida, por favor, escolhe entre 1, 4 ou 5")
+            show_menu_escolha_site()
+
+        produto = escolher_produto(site)
+
+        plotar_historico_precos(produto, site)
+
+        show_menu_escolha_site()
+            
 
 def show_menu():
     print("+---------------------------+")
@@ -22,7 +66,8 @@ def show_menu():
     print("+- - - - - - - - - - - - - -+")
     print("| 1. WebScrapping           |")
     print("| 2. Adicionar link         |")
-    print("| 3. Encerrar execução      |")
+    print("| 3. Mostrar gráfico        |")
+    print("| 4. Encerrar execução      |")
     print("+---------------------------+")
 
     choose = input("> ")
@@ -34,11 +79,13 @@ def show_menu():
         os.system("clear")
         escolhe_spyder_json()
     elif choose == '3':
+        show_menu_escolha_site()
+    elif choose == '4':
         os.system("clear")
         sys.exit(0)
     else:
         os.system("clear")
-        print("Opção inválida, por favor, escolhe entre 1, 2 ou 3.\n")
+        print("Opção inválida, por favor, escolhe entre 1, 2, 3 ou 4.\n")
         show_menu()
 
 
