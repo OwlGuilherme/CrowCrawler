@@ -64,3 +64,11 @@ def carrega_dados(site):
         df['produto'] = df['produto'].str.lstrip()
 
         print(df)
+
+
+def obter_produtos(site):
+    with sqlite3.connect('banco.db') as conn:
+        query = f"SELECT DISTINCT produto FROM dados WHERE site='{site}'"
+        df = pd.read_sql_query(query, conn)
+
+    return df['produto'].tolist()
