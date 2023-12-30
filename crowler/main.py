@@ -9,6 +9,7 @@ from crowler.spiders.netshoes import NetshoesSpider
 from crowler.spiders.centauro import CentauroSpider
 from crowler.spiders.declathon import DeclathonSpider
 from crowler.spiders.mercadoLivre import MercadolivreSpider
+from crowler.spiders.magazineLuiza import MagazineluizaSpider
 # Plotagem de gráficos
 from utils.graficos import plotar_historico_precos
 # Outras bibliotecas
@@ -22,7 +23,7 @@ def show_menu_escolha_site():
         print("|      Digite o site do produto     |")
         print("+- - - - - - - - - - - - - - - - - -+")
         print("| 1. Amazon                         |")
-        print("| 2. Inativo                        |")
+        print("| 2. Magazine Luiza                 |")
         print("| 3. Inativo                        |")
         print("| 4. Centauro                       |")
         print("| 5. Declathon                      |")
@@ -33,6 +34,8 @@ def show_menu_escolha_site():
         choose = input("> ")
         if choose == '1':
             site = 'Amazon'
+        elif choose == '2':
+            site = 'Magazine Luiza'
         elif choose == '4':
             site = 'Centauro'
         elif choose == '5':
@@ -46,7 +49,7 @@ def show_menu_escolha_site():
 
         else:
             os.system("clear")
-            print("Opção inválida, por favor, escolhe entre 1, 4, 5, 6 ou 7.")
+            print("Opção inválida, por favor, escolhe entre 1, 2, 4, 5, 6 ou 7.")
             show_menu_escolha_site()
 
         produto = escolher_produto(site)
@@ -59,6 +62,7 @@ def show_menu_escolha_site():
             
 
 def show_menu():
+    
     print("+---------------------------+")
     print("|        CrowCrawler        |")
     print("+---------------------------+")
@@ -102,8 +106,8 @@ def go_scrapping():
 
         if site_key == 'amazon':
             process.crawl(AmazonSpider, rules=site_rules)
-        elif site_key == 'mercadolivre':
-            process.crawl(MercadolivreSpider, rules=site_rules)
+        elif site_key == 'magazineluiza':
+            process.crawl(MagazineluizaSpider, rules=site_rules)
         elif site_key == 'centauro':
             process.crawl(CentauroSpider, rules=site_rules)
         elif site_key == 'netshoes':
@@ -113,12 +117,18 @@ def go_scrapping():
 
         process.start()
 
+        os.system("clear")
+
         print("Dados salvos no banco de dados com sucesso.")
     else:
+
+        os.system("clear")
+
         print(f"Regras não encontradas para o site: {site_key}")
 
 
 def choose_site():
+    
 
     print("+-----------------------------------+")
     print("|            CrowCrawler            |")
@@ -126,7 +136,7 @@ def choose_site():
     print("| Escolha o site que deseja raspar: |")
     print("+- - - - - - - - - - - - - - - - - -+")
     print("| 1. Amazon                         |")
-    print("| 2. Inativo                        |")
+    print("| 2. Magazine Luiza                 |")
     print("| 3. Inativo                        |")
     print("| 4. Centauro                       |")
     print("| 5. Declathon                      |")
@@ -138,8 +148,8 @@ def choose_site():
 
     if choice == '1':
         return 'amazon'
-    #elif choice == '2':
-        #return 'mercadolivre'
+    elif choice == '2':
+        return 'magazineluiza'
     #elif choice == '3':
         #return 'netshoes'
     elif choice == '4':
@@ -154,7 +164,7 @@ def choose_site():
         sys.exit(0)
     else:
         os.system("clear")
-        print("Escolha inválida. Por favor, escolha 1, 4, 5 ou 6.\n")        
+        print("Escolha inválida. Por favor, escolha 1, 2, 4, 5 ou 6.\n")        
         return choose_site()
     
 
