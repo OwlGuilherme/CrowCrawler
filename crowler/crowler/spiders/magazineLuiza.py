@@ -11,7 +11,7 @@ class MagazineluizaSpider(scrapy.Spider):
     allowed_domains = ["magazineluiza.com.br"]
 
     def start_requests(self):
-        with open ('crowler/rules/magazineLuiza.json', 'r') as file:
+        with open ('crowler/rules/magazineluiza.json', 'r') as file:
             data = json.load(file)
             urls = data.get('urls', [])
 
