@@ -24,26 +24,31 @@ def escolhe_spyder_json():
     print("| acrescentar links:                |")
     print("+- - - - - - - - - - - - - - - - - -+")
     print("| 1. Amazon                         |")
-    print("| 2. Inativo                        |")
+    print("| 2. Magazine Luiza                 |")
     print("| 3. Inativo                        |")
     print("| 4. Centauro                       |")
     print("| 5. Declathon                      |")
-    print("| 6. sair                           |") 
+    print("| 6. Voltar                         |") 
+    print("| 6. Sair                           |") 
     print("+-----------------------------------+")
 
     nome_arquivo = input("> ")
 
     if nome_arquivo == '1':
         arquivo = 'amazon'
+    elif nome_arquivo == '2':
+        arquivo = 'magazineluiza'
     elif nome_arquivo == '4':
         arquivo = 'centauro'
     elif nome_arquivo == '5':
         arquivo = 'declathon'
     elif nome_arquivo == '6':
+        show_menu()
+    elif nome_arquivo == '7':
         os.system("clear")
         sys.exit(0)
     else:
-        print("Escolha inválida, por favor, escolher 1, 4, ou 5")
+        print("Escolha inválida, por favor, escolher 1, 2, 4, ou 5")
         os.system('clear')
         escolhe_spyder_json()
 
@@ -51,6 +56,8 @@ def escolhe_spyder_json():
 
     novo_link = input("Insira o novo link: ")
 
-    salva_link_json(arquivo, novo_link) 
+    salva_link_json(arquivo, novo_link)
     os.system("clear")
+
+    escolhe_spyder_json()
 
