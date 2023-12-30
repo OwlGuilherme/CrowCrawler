@@ -35,7 +35,7 @@ def show_menu_escolha_site():
         if choose == '1':
             site = 'Amazon'
         elif choose == '2':
-            site = 'Magazine Luiza'
+            site = 'MagazineLuiza'
         elif choose == '4':
             site = 'Centauro'
         elif choose == '5':
