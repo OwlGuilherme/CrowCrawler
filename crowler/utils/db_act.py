@@ -63,7 +63,7 @@ def carrega_dados(site):
 
         df['produto'] = df['produto'].str.lstrip()
 
-        print(df)
+        #print(df)
 
 
 def obter_produtos(site):
@@ -72,3 +72,24 @@ def obter_produtos(site):
         df = pd.read_sql_query(query, conn)
 
     return df['produto'].tolist()
+
+def escolher_produto(site):
+    print(f"Escolher o número do produto que deseja visualizar do site {site}")
+
+    lista_de_produtos = obter_produtos(site)
+
+    for i, produto in enumerate(lista_de_produtos, start=1):
+        print(f"{i}. {produto}")
+
+    while True:
+        try:
+            escolha = int(input("Digite o número do produto: "))
+
+            if 1 <= escolha <= len(lista_de_produtos):
+                return lista_de_produtos[escolha - 1]
+            else:
+                print("Escolher inválida. Tente novamente.")
+
+        except ValueError:
+            print("Entrada inválida. Digite um número.")
+
