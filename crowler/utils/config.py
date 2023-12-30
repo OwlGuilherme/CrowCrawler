@@ -1,4 +1,4 @@
-from crowler.rules.rules import MercadoLivreRules, NetshoesRules, AmazonRules, CentauroRules, DeclathonRules, MagazineLuizaRules
+from crowler.rules.rules import MercadoLivreRules, NetshoesRules, AmazonRules, CentauroRules, DeclathonRules, MagazineLuizaRules, ShopeeRules
 
 SITE_RULES = {
     'mercadolivre': MercadoLivreRules(),
@@ -6,6 +6,7 @@ SITE_RULES = {
     'amazon' : AmazonRules(),
     'centauro' : CentauroRules(),
     'declathon' : DeclathonRules(),
-    'magazineluiza' : MagazineLuizaRules()
+    'magazineluiza' : MagazineLuizaRules(),
+    'shopee': ShopeeRules()
 }
 
