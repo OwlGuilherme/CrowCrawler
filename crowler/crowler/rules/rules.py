@@ -31,6 +31,6 @@ class MagazineLuizaRules:
 
 class ShopeeRules:
     def __init__(self):
-        self.name_selector = "//div[@class='_44qnta']/span[1]/text()"
-        self.price_selector = '//*[@id="main"]/div/div[2]/div[1]/div[1]/div/div[2]/section[1]/section[2]/div/div[3]/div/div/section/div/div/div/text()'
+        self.name_selector = "//div[@class='_44qnta']//span/text()"
+        self.price_selector = "//div[@class='flex items-center nmrSND']//div[@class='flex items-center']//div[@class='pqTWkA']/text()"
 
