@@ -29,4 +29,8 @@ class MagazineLuizaRules:
         self.name_selector = "//h1[@data-testid='heading-product-title' and @class='sc-kpDqfm gXZPqL']/text()"
         self.price_selector = "//p[@data-testid='price-value' and @class='sc-kpDqfm eCPtRw sc-hoLEA kXWuGr']/text()"
 
-        
+class ShopeeRules:
+    def __init__(self):
+        self.name_selector = "//div[@class='_44qnta']/span[1]/text()"
+        self.price_selector = '//*[@id="main"]/div/div[2]/div[1]/div[1]/div/div[2]/section[1]/section[2]/div/div[3]/div/div/section/div/div/div/text()'
+
