@@ -9,7 +9,7 @@ class ShopeeSpider(scrapy.Spider):
     allowed_domains = ["shopee.com.br"]
 
     def start_requests(self):
-        with open('croler/rules/shopee.json', 'r') as file:
+        with open('crowler/rules/shopee.json', 'r') as file:
             data = json.load(file)
             urls = data.get('urls', [])
 
@@ -21,10 +21,14 @@ class ShopeeSpider(scrapy.Spider):
 
     def parse(self, response):
 
-        name = response.selector.xpath(self.rules.name_selector).get().strip()
+        name = response.selector.xpath(self.rules.name_selector).get()
         price = response.selector.xpath(self.rules.price_selector).get()
 
+        print(f'Nome: {name}')
+        print(f'Preço: {price}')
+
         price = preprocessar_preco(price)
+
 
          # Verificar mudança de preço antes de salvar
         if self.verificar_mudanca_de_preco(name, float(price), 'Shopee'):
@@ -38,3 +42,4 @@ class ShopeeSpider(scrapy.Spider):
 
         diferenca_percentual = abs((novo_preco - ultimo_preco) / ultimo_preco)
         return diferenca_percentual > margem_tolerancia
+
