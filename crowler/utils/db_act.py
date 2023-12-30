@@ -1,6 +1,7 @@
 import sqlite3
 import datetime
 import pandas as pd
+import os
 
 def criar_tabela():
     with sqlite3.connect('banco.db') as conn:
@@ -74,7 +75,8 @@ def obter_produtos(site):
     return df['produto'].tolist()
 
 def escolher_produto(site):
-    print(f"Escolher o número do produto que deseja visualizar do site {site}")
+    os.system("clear")
+    print(f"\nEscolha o número do produto que deseja visualizar do site {site}.\n")
 
     lista_de_produtos = obter_produtos(site)
 
@@ -83,7 +85,7 @@ def escolher_produto(site):
 
     while True:
         try:
-            escolha = int(input("Digite o número do produto: "))
+            escolha = int(input("\nDigite o número do produto: "))
 
             if 1 <= escolha <= len(lista_de_produtos):
                 return lista_de_produtos[escolha - 1]
