@@ -117,12 +117,12 @@ def go_scrapping():
 
         process.start()
 
-        os.system("clear")
+        #os.system("clear")
 
         print("Dados salvos no banco de dados com sucesso.")
     else:
 
-        os.system("clear")
+        #os.system("clear")
 
         print(f"Regras não encontradas para o site: {site_key}")
 
@@ -149,9 +149,7 @@ def choose_site():
     if choice == '1':
         return 'amazon'
     elif choice == '2':
-        return 'magazineluiza'
-    #elif choice == '3':
-        #return 'netshoes'
+        return 'magazineluiza'    
     elif choice == '4':
         return 'centauro'
     elif choice == '5':
