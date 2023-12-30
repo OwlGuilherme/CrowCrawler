@@ -67,7 +67,7 @@ def show_menu():
     print("| 1. WebScrapping           |")
     print("| 2. Adicionar link         |")
     print("| 3. Mostrar gráfico        |")
-    print("| 4. Encerrar execução      |")
+    print("| 4. Sair                   |")
     print("+---------------------------+")
 
     choose = input("> ")
@@ -130,7 +130,8 @@ def choose_site():
     print("| 3. Inativo                        |")
     print("| 4. Centauro                       |")
     print("| 5. Declathon                      |")
-    print("| 6. Sair                           |")    
+    print("| 6. Voltar                         |") 
+    print("| 7. Sair                           |")    
     print("+-----------------------------------+")
 
     choice = input("> ")
@@ -146,6 +147,9 @@ def choose_site():
     elif choice == '5':
         return 'declathon'
     elif choice == '6':
+        os.system("clear")
+        show_menu()
+    elif choice == '7':
         os.system("clear")
         sys.exit(0)
     else:
