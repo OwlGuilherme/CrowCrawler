@@ -28,8 +28,15 @@ def salvar_dados(nome, preco_atual, site):
 
 def preprocessar_preco(preco):
     if isinstance(preco, str) and 'R$' in preco:
-        preco = preco.replace('R$', '').replace(',', '.')
+        # Remover "R$" e substituir vírgulas por pontos
+        preco = preco.replace('R$', '').replace('.', '').replace(',', '.')
+
+        # Remover espaços em branco antes e depois da string
+        preco = preco.strip()
+
     return preco
+
+
 
 def obter_ultimo_preco(nome, site):
     with sqlite3.connect('banco.db') as conn:
