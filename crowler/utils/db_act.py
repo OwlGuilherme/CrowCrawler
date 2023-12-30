@@ -1,5 +1,6 @@
 import sqlite3
 import datetime
+import pandas as pd
 
 def criar_tabela():
     with sqlite3.connect('banco.db') as conn:
@@ -37,7 +38,6 @@ def preprocessar_preco(preco):
     return preco
 
 
-
 def obter_ultimo_preco(nome, site):
     with sqlite3.connect('banco.db') as conn:
         cursor = conn.cursor()
@@ -53,3 +53,14 @@ def obter_dados():
         dados = cursor.fetchall()
 
     return dados
+
+
+def carrega_dados(site):
+    with sqlite3.connect('banco.db') as conn:
+        query = f"SELECT produto, horario, precos FROM dados WHERE site='{site}'"
+
+        df = pd.read_sql_query(query, conn)
+
+        df['produto'] = df['produto'].str.lstrip()
+
+        print(df)
