@@ -18,7 +18,7 @@ import sys
 
 
 def show_menu_escolha_site():
-        
+    while True:
         print("+-----------------------------------+")
         print("|      Digite o site do produto     |")
         print("+- - - - - - - - - - - - - - - - - -+")
@@ -46,19 +46,18 @@ def show_menu_escolha_site():
         elif choose == '7':
             os.system("clear")
             sys.exit(0)
-
         else:
             os.system("clear")
-            print("Opção inválida, por favor, escolhe entre 1, 2, 4, 5, 6 ou 7.")
-            show_menu_escolha_site()
+            print("Opção inválida, por favor, escolha entre 1, 2, 4, 5, 6 ou 7.")
+            continue  # Volta ao início do loop
 
         produto = escolher_produto(site)
 
+        if not go_scrapping():
+            break  # Sai do loop se o scraping não for bem-sucedido
+
         plotar_historico_precos(produto, site)
-
         os.system("clear")
-
-        show_menu_escolha_site()
             
 
 def show_menu():
@@ -95,17 +94,16 @@ def show_menu():
 
 
 def go_scrapping():
-    
     site_key = choose_site()    
     site_rules = SITE_RULES.get(site_key)
 
     if site_rules:
-        process = CrawlerProcess(settings={
-            'DOWNLOAD_DELAY': 3
-        })
+        process = CrawlerProcess(settings={'DOWNLOAD_DELAY': 3})
 
         if site_key == 'amazon':
             process.crawl(AmazonSpider, rules=site_rules)
+        elif site_key == 'mercadolivre':
+            process.crawl(MercadolivreSpider, rules=site_rules)
         elif site_key == 'magazineluiza':
             process.crawl(MagazineluizaSpider, rules=site_rules)
         elif site_key == 'centauro':
@@ -116,15 +114,12 @@ def go_scrapping():
             process.crawl(DeclathonSpider, rules=site_rules)
 
         process.start()
-
-        #os.system("clear")
-
+        
         print("Dados salvos no banco de dados com sucesso.")
+        return True
     else:
-
-        #os.system("clear")
-
         print(f"Regras não encontradas para o site: {site_key}")
+        return False
 
 
 def choose_site():
@@ -137,7 +132,7 @@ def choose_site():
     print("+- - - - - - - - - - - - - - - - - -+")
     print("| 1. Amazon                         |")
     print("| 2. Magazine Luiza                 |")
-    print("| 3. Inativo                        |")
+    print("| 3. Mercado Livre                  |")
     print("| 4. Centauro                       |")
     print("| 5. Declathon                      |")
     print("| 6. Voltar                         |") 
@@ -149,7 +144,9 @@ def choose_site():
     if choice == '1':
         return 'amazon'
     elif choice == '2':
-        return 'magazineluiza'    
+        return 'magazineluiza'
+    elif choice == '3':
+        return 'mercadolivre'
     elif choice == '4':
         return 'centauro'
     elif choice == '5':
