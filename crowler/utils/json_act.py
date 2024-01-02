@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+from utils import graficos
 
 def salva_link_json(arquivo, novo_link):
 
@@ -43,7 +44,7 @@ def escolhe_spyder_json():
     elif nome_arquivo == '5':
         arquivo = 'declathon'
     elif nome_arquivo == '6':
-        show_menu()
+        graficos.show_menu()
     elif nome_arquivo == '7':
         os.system("clear")
         sys.exit(0)
