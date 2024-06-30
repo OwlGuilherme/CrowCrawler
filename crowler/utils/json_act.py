@@ -30,7 +30,7 @@ def escolhe_spyder_json():
     print("| 4. Centauro                       |")
     print("| 5. Declathon                      |")
     print("| 6. Voltar                         |") 
-    print("| 6. Sair                           |") 
+    print("| 7. Sair                           |") 
     print("+-----------------------------------+")
 
     nome_arquivo = input("> ")
